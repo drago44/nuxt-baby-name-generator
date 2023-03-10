@@ -1,21 +1,5 @@
-<script setup lang="ts">
-  enum Gender {
-    GIRL = 'Girl',
-    BOY = 'Boy',
-    UNISEX = 'Unisex',
-  }
-
-  enum Popularity {
-    TRENDY = 'Trendy',
-    UNIQUE = 'Unique',
-  }
-
-  enum Length {
-    SHORT = 'Short',
-    LONG = 'Long',
-    ALL = 'All',
-  }
-
+<script lang="ts" setup>
+  import { Gender, Popularity, Length, names } from '@/data';
   interface OptionsState {
     gender: Gender;
     popularity: Popularity;
@@ -27,6 +11,8 @@
     length: Length.SHORT,
     popularity: Popularity.TRENDY,
   });
+
+  const selectedNames = ref<string[]>([]);
 </script>
 
 <template>
@@ -105,7 +91,9 @@
           </button>
         </div>
       </div>
+      <button class="primary">Find Names</button>
     </div>
+    {{ selectedNames }}
   </div>
 </template>
 
@@ -152,5 +140,15 @@
   .option-active {
     background-color: rgb(249, 87, 89);
     color: white;
+  }
+  .primary {
+    background-color: rgb(249, 87, 89);
+    color: white;
+    border-radius: 6.5rem;
+    border: none;
+    padding: 0.75rem 4rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
   }
 </style>
