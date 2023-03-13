@@ -5,17 +5,19 @@
     option: {
       title: string;
       category: string;
-      buttons: Gender[];
+      buttons: Gender[] | Length[] | Popularity[];
     };
     options: {
       gender: Gender;
       popularity: Popularity;
       length: Length;
+      [key: string]: string;
     };
   }
+
   const props = defineProps<OptionProps>();
 
-  const computeButtonClasses = (value, index) => {
+  const computeButtonClasses = (value: string, index: number) => {
     const classNames = [];
 
     if (props.options[props.option.category] === value)
